@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -16,11 +16,31 @@ router.get('/', (req, res) => {
 
 // GET /api/users/1
 router.get('/:id', (req, res) => {
-    User.findOne({
-        attributes: { exclude: ['password'] },
-      where: {
-        id: req.params.id
-      }
+  User.findOne({
+    attributes: { exclude: ['password'] },
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Post,
+        attributes: ['id', 'title', 'post_url', 'created_at']
+      },
+         // include the Comment model here:
+      {
+        model: Comment,
+          attributes: ['id', 'comment_text', 'created_at'],
+          include: {
+          attributes: ['title']
+        }
+      },
+        {
+          model: Post,
+          attributes: ['title'],
+          through: Vote,
+          as: 'voted_posts'
+        }
+      ]
     })
       .then(dbUserData => {
         if (!dbUserData) {
@@ -33,7 +53,8 @@ router.get('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-});
+  });
+
 
 // POST /api/users
 router.post('/', (req, res) => {
@@ -68,14 +89,13 @@ router.post('/login', (req, res) => {
             return;
           }
           res.json({ user: dbUserData, message: 'You are now logged in!'});
-        // res.json({ user: dbUserData });
     })
 })
 
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
     User.update(req.body, {
-        individualHooks: true,
+      individualHooks: true,
       where: {
         id: req.params.id
       }
@@ -113,4 +133,4 @@ router.delete('/:id', (req, res) => {
       });
 });
 
-module.exports = router; 
+module.exports = router;
