@@ -71,25 +71,25 @@
     width: 100%;
     min-height: 100%;
     max-width: 1200px;
-    margin: 0 auto;
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
   }
   
   header {
-    border-bottom: 1px solid #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 1%;
     background-color: #333;
+    width: 100%;
   }
   
   header h1 {
     font-size: small;
     border: 2px outset #7d7d7d;
     border-radius: 5px;
-    padding: 1.25rem;
+    padding: 10px;
   }
   
   main {
@@ -101,6 +101,12 @@
       padding: 1.2rem;
       text-align: right;
       white-space: pre;
+      display: flex;
+  }
+
+  nav a {
+    margin: 5px;
+    padding: 5px;
   }
   
   .btn-no-style {
@@ -132,6 +138,7 @@
   .post {
     margin-bottom: 2%;
     line-height: 150%;
+    border-bottom: 1px solid #ccc;
   }
   
   .post .title {
@@ -197,7 +204,6 @@
   }
   
   footer {
-    border-top: 1px solid #ccc;
     display: flex;
     justify-content: center;
     padding: 1%;
