@@ -209,5 +209,5 @@
     justify-content: center;
     padding: 1%;
     font-size: 110%;
-    border: 1px solid #747474;
+    border-top: 2px inset #747474;
   }
