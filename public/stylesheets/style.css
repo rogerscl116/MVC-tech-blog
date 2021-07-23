@@ -26,7 +26,7 @@
   button {
     background-color: #747474;
     border: 0;
-    padding: 1%;
+    padding: 10px;
     color: white;
     font-weight: bold;
     transition: background-color .1s;
@@ -48,11 +48,17 @@
     padding: .5%;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
+
+  input {
+      background-color: lightgray;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
   
   textarea:focus, input:focus {
     outline: none;
-    border: 1px solid #3486eb;
+    border: 1px solid #3b3b3b;
   }
   
   textarea {
@@ -115,7 +121,7 @@
     padding: 0;
     cursor: pointer;
     text-decoration: none;
-    color: #225ca3;
+    color: rgb(202, 202, 202);
     font-size: 100%;
     font-weight: bold;
     transition: color .1s;
@@ -124,15 +130,16 @@
   
   .btn-no-style:hover {
     background: none;
-    color: #3486eb;
+    color: white;
   }
+
   
   .delete-post-btn {
-    background-color: #d41414;
+    background-color: #af0000;
   }
   
   .delete-post-btn:hover {
-    background-color: #ff643d;
+    background-color: #e20505;
   }
   
   .post {
@@ -170,15 +177,18 @@
   
   .comment-form {
     margin-bottom: 5%;
+
   }
   
   .comment {
     padding: 1%;
     margin-bottom: 1%;
+    border-bottom: 1px solid #747474;
+    background-color: black;
   }
   
   .comment:nth-child(odd) {
-    background-color: #f0f5ff;
+    background-color: black;
   }
   
   .comment .meta {
@@ -189,7 +199,10 @@
   
   .new-post-form input, textarea {
     width: 80%;
+    background-color: lightgray;
   }
+
+
   
   .edit-post-form {
     margin-bottom: 5%;

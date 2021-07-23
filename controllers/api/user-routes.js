@@ -6,7 +6,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // GET /api/users -- get all users
 router.get('/', (req, res) => {
-    // Access the User model and run .findAll() method to get all users
     User.findAll({
         // when the data is sent back, exclude the password property
         attributes: { exclude: ['password'] }
@@ -22,9 +21,7 @@ router.get('/', (req, res) => {
 
 // GET /api/users/1 -- get a single user by id
 router.get('/:id', (req, res) => {
-    // Acess the User model and run the findOne() method to get a single user based on parameters
     User.findOne({
-      // when the data is sent back, exclude the password property
       attributes: { exclude: ['password'] },
       where: {
         // use id as the parameter for the request
@@ -64,7 +61,6 @@ router.get('/:id', (req, res) => {
 
 // POST /api/users -- add a new user
 router.post('/', (req, res) => {
-  // create method
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -80,7 +76,6 @@ router.post('/', (req, res) => {
         res.json(dbUserData);
       });
     })
-    // if there is a server error, return that error
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -89,7 +84,6 @@ router.post('/', (req, res) => {
 
 // POST /api/users/login -- login route for a user
 router.post('/login',  (req, res) => {
-    // findOne method by email to look for an existing user in the database with the email address entered
     User.findOne({
         where: {
         email: req.body.email
@@ -100,7 +94,7 @@ router.post('/login',  (req, res) => {
         res.status(400).json({ message: 'No user with that email address!' });
         return;
         }
-        // Otherwise, verify the user.
+        // otherwise, verify the user.
         // call the instance method as defined in the User model
         const validPassword = dbUserData.checkPassword(req.body.password);
         // if the password is invalid (method returns false), return an error
@@ -124,6 +118,7 @@ router.post('/login',  (req, res) => {
 router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
+      // 204 status is that a request has succeeded, but client does not need to go to a different page
       res.status(204).end();
     });
   } else {
@@ -134,12 +129,6 @@ router.post('/logout', withAuth, (req, res) => {
 
 // PUT /api/users/1 -- update an existing user
 router.put('/:id', withAuth, (req, res) => {
-    // update method
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  
-    // if req.body has exact key/value pairs to match the model, 
-    // you can just use `req.body` instead of calling out each property,
-    // allowing for updating only key/value pairs that are passed through
     User.update(req.body, {
         // since there is a hook to hash only the password, the option is noted here
         individualHooks: true,
@@ -163,7 +152,6 @@ router.put('/:id', withAuth, (req, res) => {
 
 // DELETE /api/users/1 -- delete an existing user
 router.delete('/:id', withAuth, (req, res) => {
-    // destroy method
     User.destroy({
       where: {
         id: req.params.id
