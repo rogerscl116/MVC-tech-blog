@@ -6,12 +6,13 @@
 ## Description
 A CMS-style blog site where developers can publish their blog posts and comment on other posts.
 
-### Screenshots
-![MVC Tech Blog Screenshot ]()
+Deployed application: https://mvc-tech-blog923874.herokuapp.com/
 
-### Walkthrough Videos
-![ORM E-Commerce Back End Walkthrough 2]()
-- [Click here for link]()
+## Screenshots
+### Homepage
+![MVC Tech Blog Homepage](./public/images/mvc-tech-blog-home.jpg)
+### Dashboard
+![MVC Tech Blog Dashboard](./public/images/mvc-tech-blog-dash.jpg)
 
 ## Table of Contents
   * [Installation](#installation)
@@ -23,8 +24,8 @@ A CMS-style blog site where developers can publish their blog posts and comment 
 Enter `npm install` in the terminal to install the necessary dependencies.
    
 ## Usage
-- Enter `node server.js` or `npm start` to connect to the localserver.
-- Type `http://localhost:3001/` in the address bar to use application.
+- Enter `node server.js` or `npm start` to connect to the localhost.
+- Enter `http://localhost:3001/` in the address bar to use application.
 
 ## Contributing
 Charity Rogers
