@@ -149,15 +149,15 @@
     border-bottom: 2px groove #747474;
   }
   
-  .post .title {
+  .title {
     font-style: italic;
-    font-size: small;
+    font-size: medium;
     color: #7d7d7d;
   }
 
-  .post .title span {
+  .title span {
     font-style: italic;
-    font-size: medium;
+    font-size: large;
     color: #7d7d7d;
   }
   
